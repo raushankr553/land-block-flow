@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Wallet } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("about")}
               className="text-muted-foreground hover:text-primary transition-smooth"
@@ -51,20 +52,20 @@ const Header = () => {
             >
               Use Cases
             </button>
+            <Link to="/crowdfund">
+              <Button variant="outline" className="gap-2">
+                <Wallet className="h-4 w-4" />
+                Crowdfund
+              </Button>
+            </Link>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-muted-foreground hover:text-primary transition-smooth"
             >
-              Contact
+              <Button variant="default" className="shadow-glow">
+                Get Started
+              </Button>
             </button>
           </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="default" className="shadow-glow">
-              Get Started
-            </Button>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -103,15 +104,20 @@ const Header = () => {
               >
                 Use Cases
               </button>
+              <Link to="/crowdfund" className="w-full">
+                <Button variant="outline" className="w-full gap-2">
+                  <Wallet className="h-4 w-4" />
+                  Crowdfund
+                </Button>
+              </Link>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-left text-muted-foreground hover:text-primary transition-smooth"
+                className="w-full"
               >
-                Contact
+                <Button variant="default" className="w-full shadow-glow">
+                  Get Started
+                </Button>
               </button>
-              <Button variant="default" className="w-full shadow-glow">
-                Get Started
-              </Button>
             </div>
           </nav>
         )}
